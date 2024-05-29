@@ -1,4 +1,4 @@
-resource azurerm_kubernetes_cluster "k8s_cluster" {
+resource azurerm_kubernetes_cluster "k8s_cluster" { # Drata:  should be set to any of azure, calico, cilium
   dns_prefix          = "terragoat-${var.environment}"
   location            = var.location
   name                = "terragoat-aks-${var.environment}"
