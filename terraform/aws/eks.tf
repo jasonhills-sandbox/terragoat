@@ -20,6 +20,7 @@ resource aws_iam_role "iam_for_eks" {
   name               = "${local.resource_prefix.value}-iam-for-eks"
   assume_role_policy = data.aws_iam_policy_document.iam_policy_eks.json
   tags = {
+    # Drata: Set [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/aws/eks.tf"
     git_last_modified_at = "2020-06-16 14:46:24"
@@ -46,6 +47,7 @@ resource aws_vpc "eks_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = merge({
+    # Drata: Set [aws_vpc.tags] to ensure that organization-wide tagging conventions are followed.
     Name = "${local.resource_prefix.value}-eks-vpc"
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -65,6 +67,7 @@ resource aws_subnet "eks_subnet1" {
   availability_zone       = "${var.region}a"
   map_public_ip_on_launch = true
   tags = merge({
+    # Drata: Set [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
     Name                                            = "${local.resource_prefix.value}-eks-subnet"
     "kubernetes.io/cluster/${local.eks_name.value}" = "shared"
     }, {
@@ -93,6 +96,7 @@ resource aws_subnet "eks_subnet2" {
   availability_zone       = "${var.region}b"
   map_public_ip_on_launch = true
   tags = merge({
+    # Drata: Set [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
     Name                                            = "${local.resource_prefix.value}-eks-subnet2"
     "kubernetes.io/cluster/${local.eks_name.value}" = "shared"
     }, {

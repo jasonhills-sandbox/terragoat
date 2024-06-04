@@ -18,6 +18,7 @@ export AWS_DEFAULT_REGION=us-west-2
 echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
 EOF
   tags = merge({
+    # Drata: Set [aws_instance.tags] to ensure that organization-wide tagging conventions are followed.
     Name = "${local.resource_prefix.value}-ec2"
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -119,6 +120,7 @@ resource "aws_vpc" "web_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = merge({
+    # Drata: Set [aws_vpc.tags] to ensure that organization-wide tagging conventions are followed.
     Name = "${local.resource_prefix.value}-vpc"
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -139,6 +141,7 @@ resource "aws_subnet" "web_subnet" {
   map_public_ip_on_launch = true
 
   tags = merge({
+    # Drata: Set [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
     Name = "${local.resource_prefix.value}-subnet"
     }, {
     git_commit           = "6e62522d2ab8f63740e53752b84a6e99cd65696a"
@@ -159,6 +162,7 @@ resource "aws_subnet" "web_subnet2" {
   map_public_ip_on_launch = true
 
   tags = merge({
+    # Drata: Set [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
     Name = "${local.resource_prefix.value}-subnet2"
     }, {
     git_commit           = "6e62522d2ab8f63740e53752b84a6e99cd65696a"
@@ -194,6 +198,7 @@ resource "aws_route_table" "web_rtb" {
   vpc_id = aws_vpc.web_vpc.id
 
   tags = merge({
+    # Drata: Set [aws_route_table.tags] to ensure that organization-wide tagging conventions are followed.
     Name = "${local.resource_prefix.value}-rtb"
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -273,6 +278,7 @@ resource "aws_s3_bucket" "flowbucket" {
   force_destroy = true
 
   tags = merge({
+    # Drata: Set [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-flowlogs"
     Environment = local.resource_prefix.value
     }, {

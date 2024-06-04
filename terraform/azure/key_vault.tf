@@ -16,6 +16,7 @@ resource "azurerm_key_vault" "example" {
     ]
   }
   tags = merge({
+    # Drata: Set [azurerm_key_vault.tags] to ensure that organization-wide tagging conventions are followed.
     environment = var.environment
     terragoat   = true
     }, {
@@ -44,6 +45,7 @@ resource "azurerm_key_vault_key" "generated" {
     "wrapKey",
   ]
   tags = {
+    # Drata: Set [azurerm_key_vault_key.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "898d5beaec7ffdef6df0d7abecff407362e2a74e"
     git_file             = "terraform/azure/key_vault.tf"
     git_last_modified_at = "2020-06-17 12:59:55"
@@ -60,6 +62,7 @@ resource "azurerm_key_vault_secret" "secret" {
   name         = "terragoat-secret-${var.environment}"
   value        = random_string.password.result
   tags = {
+    # Drata: Set [azurerm_key_vault_secret.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "f8ff847bb69370bbe03b3d2b70db586ff6c867fc"
     git_file             = "terraform/azure/key_vault.tf"
     git_last_modified_at = "2020-06-19 21:16:08"

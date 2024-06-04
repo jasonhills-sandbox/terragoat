@@ -6,6 +6,7 @@ resource "azurerm_storage_account" "security_storage_account" {
   account_replication_type  = "LRS"
   enable_https_traffic_only = true
   tags = {
+    # Drata: Set [azurerm_storage_account.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "a1d1c1ce31a1bde6dafa188846d90eca82abe5fd"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 05:32:41"
@@ -25,6 +26,7 @@ resource "azurerm_mssql_server" "mssql1" {
   administrator_login          = "missadministrator"
   administrator_login_password = "AdminPassword123!"
   tags = {
+    # Drata: Set [azurerm_mssql_server.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "c6f8caa51942284d02465518822685897ad90141"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 18:41:19"
@@ -44,6 +46,7 @@ resource "azurerm_mssql_server" "mssql2" {
   administrator_login          = "missadministrator"
   administrator_login_password = "AdminPassword123!"
   tags = {
+    # Drata: Set [azurerm_mssql_server.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "c6f8caa51942284d02465518822685897ad90141"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 18:41:19"
@@ -63,6 +66,7 @@ resource "azurerm_mssql_server" "mssql3" {
   administrator_login          = "missadministrator"
   administrator_login_password = "AdminPassword123!"
   tags = {
+    # Drata: Set [azurerm_mssql_server.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "c6f8caa51942284d02465518822685897ad90141"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 18:41:19"
@@ -82,6 +86,7 @@ resource "azurerm_mssql_server" "mssql4" {
   administrator_login          = "missadministrator"
   administrator_login_password = "AdminPassword123!"
   tags = {
+    # Drata: Set [azurerm_mssql_server.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "c6f8caa51942284d02465518822685897ad90141"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 18:41:19"
@@ -101,6 +106,7 @@ resource "azurerm_mssql_server" "mssql5" {
   administrator_login          = "missadministrator"
   administrator_login_password = "AdminPassword123!"
   tags = {
+    # Drata: Set [azurerm_mssql_server.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "c6f8caa51942284d02465518822685897ad90141"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 18:41:19"
@@ -120,6 +126,7 @@ resource "azurerm_mssql_server" "mssql6" {
   administrator_login          = "missadministrator"
   administrator_login_password = "AdminPassword123!"
   tags = {
+    # Drata: Set [azurerm_mssql_server.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "c6f8caa51942284d02465518822685897ad90141"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 18:41:19"
@@ -139,6 +146,7 @@ resource "azurerm_mssql_server" "mssql7" {
   administrator_login          = "missadministrator"
   administrator_login_password = "AdminPassword123!"
   tags = {
+    # Drata: Set [azurerm_mssql_server.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "c6f8caa51942284d02465518822685897ad90141"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 18:41:19"

@@ -48,6 +48,7 @@ resource "aws_db_option_group" "default" {
   option_group_description = "Terraform OG"
 
   tags = merge({
+    # Drata: Set [aws_db_option_group.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-og"
     Environment = local.resource_prefix.value
     }, {
@@ -100,6 +101,7 @@ resource "aws_db_subnet_group" "default" {
   description = "Terraform DB Subnet Group"
 
   tags = merge({
+    # Drata: Set [aws_db_subnet_group.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "sg-${local.resource_prefix.value}"
     Environment = local.resource_prefix.value
     }, {
@@ -119,6 +121,7 @@ resource "aws_security_group" "default" {
   vpc_id = aws_vpc.web_vpc.id
 
   tags = merge({
+    # Drata: Set [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-rds-sg"
     Environment = local.resource_prefix.value
     }, {
@@ -189,6 +192,7 @@ resource "aws_iam_role" "ec2role" {
 EOF
 
   tags = merge({
+    # Drata: Set [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-role"
     Environment = local.resource_prefix.value
     }, {
@@ -399,6 +403,7 @@ sudo chown root:root /var/www/html/index.php
 
 EOF
   tags = merge({
+    # Drata: Set [aws_instance.tags] to ensure that organization-wide tagging conventions are followed.
     Name = "${local.resource_prefix.value}-dbapp"
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
