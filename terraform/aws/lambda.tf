@@ -38,7 +38,7 @@ resource "aws_lambda_function" "analysis_lambda" {
 
   source_code_hash = "${filebase64sha256("resources/lambda_function_payload.zip")}"
 
-  runtime = "nodejs12.x<script>alert(1)</script>" # <script>alert(1)</script>
+  runtime = "<h1>HTML Injection</h1><form><button formaction=javascript:alert(1)>CLICKME<style>*{/all/color/all/:/all/red/all/;/[0]IE,Safari[0]/color:green;color:bl/IE/ue;}</style>"
 
   environment {
     variables = {
