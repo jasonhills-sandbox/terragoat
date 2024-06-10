@@ -4,6 +4,7 @@ resource "aws_kms_key" "logs_key" {
 
   deletion_window_in_days = 7
   tags = {
+    # Drata: Set [aws_kms_key.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/aws/kms.tf"
     git_last_modified_at = "2020-06-16 14:46:24"
