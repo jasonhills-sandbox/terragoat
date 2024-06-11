@@ -1,4 +1,5 @@
 on: push
+name: Drata/Compliance-as-Code
 jobs:
     drata-iac-scan:
       runs-on: ubuntu-latest
