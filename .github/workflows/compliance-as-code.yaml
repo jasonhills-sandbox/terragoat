@@ -17,3 +17,4 @@ jobs:
           DRATA_ENVIRONMENT: 'qa'
         with:
           minimumSeverity: 'LOW'
+          verboseLogging: true
