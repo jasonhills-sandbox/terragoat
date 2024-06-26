@@ -1,4 +1,5 @@
 resource "azurerm_storage_account" "security_storage_account" {
+  # Drata: Set [azurerm_storage_account.public_network_access_enabled] to false to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
   name                      = "securitystorageaccount-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name       = azurerm_resource_group.example.name
   location                  = azurerm_resource_group.example.location
@@ -18,6 +19,7 @@ resource "azurerm_storage_account" "security_storage_account" {
 }
 
 resource "azurerm_mssql_server" "mssql1" {
+  # Drata: Set [azurerm_mssql_server.public_network_access_enabled] to false to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
   name                         = "terragoat-mssql1-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name          = azurerm_resource_group.example.name
   location                     = azurerm_resource_group.example.location
@@ -37,6 +39,7 @@ resource "azurerm_mssql_server" "mssql1" {
 }
 
 resource "azurerm_mssql_server" "mssql2" {
+  # Drata: Set [azurerm_mssql_server.public_network_access_enabled] to false to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
   name                         = "mssql2-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name          = azurerm_resource_group.example.name
   location                     = azurerm_resource_group.example.location
@@ -56,6 +59,7 @@ resource "azurerm_mssql_server" "mssql2" {
 }
 
 resource "azurerm_mssql_server" "mssql3" {
+  # Drata: Set [azurerm_mssql_server.public_network_access_enabled] to false to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
   name                         = "mssql3-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name          = azurerm_resource_group.example.name
   location                     = azurerm_resource_group.example.location
@@ -75,6 +79,7 @@ resource "azurerm_mssql_server" "mssql3" {
 }
 
 resource "azurerm_mssql_server" "mssql4" {
+  # Drata: Set [azurerm_mssql_server.public_network_access_enabled] to false to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
   name                         = "mssql4-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name          = azurerm_resource_group.example.name
   location                     = azurerm_resource_group.example.location
@@ -94,6 +99,7 @@ resource "azurerm_mssql_server" "mssql4" {
 }
 
 resource "azurerm_mssql_server" "mssql5" {
+  # Drata: Set [azurerm_mssql_server.public_network_access_enabled] to false to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
   name                         = "mssql5-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name          = azurerm_resource_group.example.name
   location                     = azurerm_resource_group.example.location
@@ -113,6 +119,7 @@ resource "azurerm_mssql_server" "mssql5" {
 }
 
 resource "azurerm_mssql_server" "mssql6" {
+  # Drata: Set [azurerm_mssql_server.public_network_access_enabled] to false to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
   name                         = "mssql6-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name          = azurerm_resource_group.example.name
   location                     = azurerm_resource_group.example.location
@@ -132,6 +139,7 @@ resource "azurerm_mssql_server" "mssql6" {
 }
 
 resource "azurerm_mssql_server" "mssql7" {
+  # Drata: Set [azurerm_mssql_server.public_network_access_enabled] to false to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
   name                         = "mssql7-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name          = azurerm_resource_group.example.name
   location                     = azurerm_resource_group.example.location
