@@ -1,4 +1,5 @@
 resource "aws_elasticsearch_domain" "monitoring-framework" {
+  # Drata: Set [aws_elasticsearch_domain.domain_endpoint_options.tls_security_policy] to Policy-Min-TLS-1-2-2019-07 to ensure security policies are configured using the latest secure TLS version
   # Drata: Set [configId] to [preferredValues] to utilize the benefits of fine-grained access control
   # Drata: Set [aws_elasticsearch_domain.encrypt_at_rest.enabled] to true to ensure transparent data encryption is enabled
   # Drata: Set [aws_elasticsearch_domain.cluster_config.zone_awareness_enabled] to true to improve infrastructure availability and resilience
