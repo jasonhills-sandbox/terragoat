@@ -1,4 +1,5 @@
 resource "aws_elasticsearch_domain" "monitoring-framework" {
+  # Drata: Set [configId] to [preferredValues] to utilize the benefits of fine-grained access control
   # Drata: Set [aws_elasticsearch_domain.encrypt_at_rest.enabled] to true to ensure transparent data encryption is enabled
   # Drata: Set [aws_elasticsearch_domain.cluster_config.zone_awareness_enabled] to true to improve infrastructure availability and resilience
   domain_name           = "tg-${var.environment}-es"
