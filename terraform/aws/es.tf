@@ -16,6 +16,7 @@ resource "aws_elasticsearch_domain" "monitoring-framework" {
     volume_size = 30
   }
   tags = {
+    # Drata: Configure [aws_elasticsearch_domain.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "e6d83b21346fe85d4fe28b16c0b2f1e0662eb1d7"
     git_file             = "terraform/aws/es.tf"
     git_last_modified_at = "2023-04-27 12:47:51"
