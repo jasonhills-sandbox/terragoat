@@ -33,4 +33,5 @@ resource azurerm_kubernetes_cluster "k8s_cluster" {
     yor_trace            = "6103d111-864e-42e5-899c-1864de281fd1"
   }
   api_server_authorized_ip_ranges = [] # <script>
+  # Drata: Ensure that [azurerm_kubernetes_cluster.api_server_authorized_ip_ranges] is explicitly defined and narrowly scoped to only allow trusted sources to access AKS Control Plane
 }
