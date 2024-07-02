@@ -48,6 +48,7 @@ resource "aws_db_option_group" "default" {
   option_group_description = "Terraform OG"
 
   tags = merge({
+    # Drata: Configure [aws_db_option_group.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-og"
     Environment = local.resource_prefix.value
     }, {
@@ -100,6 +101,7 @@ resource "aws_db_subnet_group" "default" {
   description = "Terraform DB Subnet Group"
 
   tags = merge({
+    # Drata: Configure [aws_db_subnet_group.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "sg-${local.resource_prefix.value}"
     Environment = local.resource_prefix.value
     }, {
@@ -119,6 +121,7 @@ resource "aws_security_group" "default" {
   vpc_id = aws_vpc.web_vpc.id
 
   tags = merge({
+    # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-rds-sg"
     Environment = local.resource_prefix.value
     }, {
@@ -189,6 +192,7 @@ resource "aws_iam_role" "ec2role" {
 EOF
 
   tags = merge({
+    # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-role"
     Environment = local.resource_prefix.value
     }, {
@@ -208,6 +212,7 @@ resource "aws_iam_role_policy" "ec2policy" {
   role = aws_iam_role.ec2role.id
 
   policy = <<EOF
+  # Drata: Explicitly define resources for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -399,6 +404,7 @@ sudo chown root:root /var/www/html/index.php
 
 EOF
   tags = merge({
+    # Drata: Configure [aws_instance.tags] to ensure that organization-wide tagging conventions are followed.
     Name = "${local.resource_prefix.value}-dbapp"
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"

@@ -6,6 +6,7 @@ resource "aws_s3_bucket" "data" {
   bucket        = "${local.resource_prefix.value}-data"
   force_destroy = true
   tags = merge({
+    # Drata: Configure [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-data"
     Environment = local.resource_prefix.value
     }, {
@@ -47,6 +48,7 @@ resource "aws_s3_bucket" "financials" {
   acl           = "private"
   force_destroy = true
   tags = merge({
+    # Drata: Configure [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-financials"
     Environment = local.resource_prefix.value
     }, {
@@ -72,6 +74,7 @@ resource "aws_s3_bucket" "operations" {
   }
   force_destroy = true
   tags = merge({
+    # Drata: Configure [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-operations"
     Environment = local.resource_prefix.value
     }, {
@@ -99,6 +102,7 @@ resource "aws_s3_bucket" "data_science" {
   }
   force_destroy = true
   tags = {
+    # Drata: Configure [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/aws/s3.tf"
     git_last_modified_at = "2020-06-16 14:46:24"

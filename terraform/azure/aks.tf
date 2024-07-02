@@ -1,4 +1,6 @@
 resource azurerm_kubernetes_cluster "k8s_cluster" {
+  # Drata: Set [azurerm_kubernetes_cluster.automatic_channel_upgrade] to any of ['stable', 'rapid', 'patch'] to automatically upgrade AKS cluster to the latest Kubernetes version
+  # Drata: Set [azurerm_kubernetes_cluster.network_profile.network_policy] to any of ['azure', 'calico', 'cilium'] to define access policy specifications for communication between Pods
   dns_prefix          = "terragoat-${var.environment}"
   location            = var.location
   name                = "terragoat-aks-${var.environment}"
@@ -23,6 +25,7 @@ resource azurerm_kubernetes_cluster "k8s_cluster" {
     enabled = false
   }
   tags = {
+    # Drata: Configure [azurerm_kubernetes_cluster.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "898d5beaec7ffdef6df0d7abecff407362e2a74e"
     git_file             = "terraform/azure/aks.tf"
     git_last_modified_at = "2020-06-17 12:59:55"
@@ -33,4 +36,5 @@ resource azurerm_kubernetes_cluster "k8s_cluster" {
     yor_trace            = "6103d111-864e-42e5-899c-1864de281fd1"
   }
   api_server_authorized_ip_ranges = [] # <script>
+  # Drata: Ensure that [azurerm_kubernetes_cluster.api_server_authorized_ip_ranges] is explicitly defined and narrowly scoped to only allow trusted sources to access AKS Control Plane
 }
