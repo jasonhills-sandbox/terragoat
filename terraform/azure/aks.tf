@@ -1,4 +1,5 @@
 resource azurerm_kubernetes_cluster "k8s_cluster" {
+  # Drata: Set [azurerm_kubernetes_cluster.network_profile.network_policy] to any of ['azure', 'calico', 'cilium'] to define access policy specifications for communication between Pods
   dns_prefix          = "terragoat-${var.environment}"
   location            = var.location
   name                = "terragoat-aks-${var.environment}"
