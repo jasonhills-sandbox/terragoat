@@ -4,6 +4,7 @@ resource "azurerm_virtual_network" "example" {
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   tags = {
+    # Drata: Configure [azurerm_virtual_network.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "898d5beaec7ffdef6df0d7abecff407362e2a74e"
     git_file             = "terraform/azure/networking.tf"
     git_last_modified_at = "2020-06-17 12:59:55"
