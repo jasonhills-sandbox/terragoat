@@ -1,4 +1,5 @@
 resource "azurerm_application_gateway" "network" {
+  # Drata: Set [azurerm_application_gateway.backend_http_settings.connection_draining.enabled] to true to allow in-flight requests to complete and prevent new requests from being accepted when instances are being taken offline. Configure timeout settings for existing connections to prevent dropped requests
   # Drata: Specify [azurerm_application_gateway.ssl_policy] to ensure strong and secure TLS/SSL cipher suites are being used for data in transit encryption. Select a predefined or custom policy type depending on the cipher suite requirements for your use-case
   name                = "example-appgateway"
   resource_group_name = "example-resourceGroup"
