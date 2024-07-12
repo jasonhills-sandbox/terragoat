@@ -48,6 +48,7 @@ resource "azurerm_storage_account" "example" {
     }
   }
   tags = {
+    # Drata: Configure [azurerm_storage_account.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "5c6b5d60a8aa63a5d37e60f15185d13a967f0542"
     git_file             = "terraform/azure/storage.tf"
     git_last_modified_at = "2021-05-02 10:06:10"
