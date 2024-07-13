@@ -6,6 +6,7 @@ resource "azurerm_storage_account" "security_storage_account" {
   account_replication_type  = "LRS"
   enable_https_traffic_only = true
   tags = {
+    # Drata: Configure [azurerm_storage_account.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "a1d1c1ce31a1bde6dafa188846d90eca82abe5fd"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 05:32:41"
