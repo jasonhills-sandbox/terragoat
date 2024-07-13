@@ -22,6 +22,7 @@ resource "aws_db_instance" "default" {
   publicly_accessible     = true
 
   tags = merge({
+    # Drata: Configure [aws_db_instance.tags] to ensure that organization-wide tagging conventions are followed.
     Name        = "${local.resource_prefix.value}-rds"
     Environment = local.resource_prefix.value
     }, {
