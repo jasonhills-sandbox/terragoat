@@ -51,6 +51,7 @@ resource "aws_rds_cluster" "app4-rds-cluster" {
   allocated_storage       = 10
   backup_retention_period = 15
   tags = {
+    # Drata: Configure [aws_rds_cluster.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "079fe74f6b96d887c245664fbd8cf676c92f20e5"
     git_file             = "terraform/aws/rds.tf"
     git_last_modified_at = "2021-12-08 23:26:32"
