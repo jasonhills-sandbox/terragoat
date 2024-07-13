@@ -25,6 +25,7 @@ resource "azurerm_mssql_server" "mssql1" {
   administrator_login          = "missadministrator"
   administrator_login_password = "AdminPassword123!"
   tags = {
+    # Drata: Configure [azurerm_mssql_server.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "c6f8caa51942284d02465518822685897ad90141"
     git_file             = "terraform/azure/mssql.tf"
     git_last_modified_at = "2022-01-20 18:41:19"
