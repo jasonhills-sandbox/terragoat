@@ -1,4 +1,5 @@
 resource "google_storage_bucket" "terragoat_website" {
+  # Drata: Specify [google_storage_bucket.retention_policy.retention_period] to 2678400 to ensure sensitive data is only available when necessary
   # Drata: Set [google_storage_bucket.versioning.enabled] to true to enable infrastructure versioning and prevent accidental deletions and overrides
   name          = "terragot-${var.environment}"
   location      = var.location
