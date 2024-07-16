@@ -1,12 +1,14 @@
 # Create a new load balancer
 resource "aws_elb" "weblb" {
+  # Drata: Set [aws_elb.internal] to true to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
+  # Drata: Configure [aws_elb.access_logs.enabled] to ensure that security-relevant events are logged to detect malicious activity
   name = "weblb-terraform-elb"
 
   listener {
     instance_port     = 8000
-    instance_protocol = "http"
+    instance_protocol = "HTTPS"
     lb_port           = 80
-    lb_protocol       = "http"
+    lb_protocol       = "HTTPS"
   }
 
   health_check {
@@ -18,6 +20,7 @@ resource "aws_elb" "weblb" {
   }
 
   subnets                     = [aws_subnet.web_subnet.id]
+  # Drata: Configure [aws_elb.subnets] to improve infrastructure availability and resilience. Define at least 2 subnets or availability zones on your load balancer to enable zone redundancy
   security_groups             = [aws_security_group.web-node.id]
   instances                   = [aws_instance.web_host.id]
   cross_zone_load_balancing   = true
@@ -26,6 +29,7 @@ resource "aws_elb" "weblb" {
   connection_draining_timeout = 400
 
   tags = merge({
+    # Drata: Configure [aws_elb.tags] to ensure that organization-wide tagging conventions are followed.
     Name = "foobar-terraform-elb"
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"

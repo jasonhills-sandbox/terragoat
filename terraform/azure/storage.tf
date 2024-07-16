@@ -21,6 +21,7 @@ resource "azurerm_managed_disk" "example" {
 }
 
 resource "azurerm_storage_account" "example" {
+  # Drata: Set [azurerm_storage_account.enable_https_traffic_only] to true to ensure secure protocols are being used to encrypt resource traffic
   name                     = "tgsa${var.environment}${random_integer.rnd_int.result}"
   resource_group_name      = azurerm_resource_group.example.name
   location                 = azurerm_resource_group.example.location
@@ -37,7 +38,7 @@ resource "azurerm_storage_account" "example" {
     hour_metrics {
       enabled               = true
       include_apis          = true
-      version               = "1.0"
+      version               = "TLS1_2"
       retention_policy_days = 10
     }
     minute_metrics {
@@ -48,6 +49,7 @@ resource "azurerm_storage_account" "example" {
     }
   }
   tags = {
+    # Drata: Configure [azurerm_storage_account.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "5c6b5d60a8aa63a5d37e60f15185d13a967f0542"
     git_file             = "terraform/azure/storage.tf"
     git_last_modified_at = "2021-05-02 10:06:10"

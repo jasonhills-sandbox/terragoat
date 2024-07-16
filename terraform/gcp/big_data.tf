@@ -1,4 +1,5 @@
 resource "google_sql_database_instance" "master_instance" {
+  # Drata: Set [google_sql_database_instance.settings.ip_configuration.require_ssl] to True to ensure secure protocols are being used to encrypt resource traffic
   name             = "terragoat-${var.environment}-master"
   database_version = "POSTGRES_11"
   region           = var.region
@@ -13,7 +14,7 @@ resource "google_sql_database_instance" "master_instance" {
       }
     }
     backup_configuration {
-      enabled = false
+      enabled = true
     }
   }
 }
@@ -22,6 +23,7 @@ resource "google_bigquery_dataset" "dataset" {
   dataset_id = "terragoat_${var.environment}_dataset"
   access {
     special_group = "allAuthenticatedUsers"
+    # Drata: Explicitly scope [google_bigquery_dataset.access.special_group] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([allusers, allauthenticatedusers])
     role          = "READER"
   }
   labels = {

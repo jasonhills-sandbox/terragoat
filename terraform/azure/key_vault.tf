@@ -1,4 +1,6 @@
 resource "azurerm_key_vault" "example" {
+  # Drata: Set [azurerm_key_vault.enable_rbac_authorization] to true to configure resource authentication using role based access control (RBAC). RBAC allows for more granularity when defining permissions for users and workloads that can access a resource
+  # Drata: Set [azurerm_key_vault.public_network_access_enabled] to false to prevent unintended public access. Ensure that only trusted users and IP addresses are explicitly allowed access, if a publicly accessible service is required for your business use case this finding can be excluded
   name                = "terragoat-key-${var.environment}${random_integer.rnd_int.result}"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
@@ -16,6 +18,7 @@ resource "azurerm_key_vault" "example" {
     ]
   }
   tags = merge({
+    # Drata: Configure [azurerm_key_vault.tags] to ensure that organization-wide tagging conventions are followed.
     environment = var.environment
     terragoat   = true
     }, {
@@ -31,6 +34,7 @@ resource "azurerm_key_vault" "example" {
 }
 
 resource "azurerm_key_vault_key" "generated" {
+  # Drata: Configure [azurerm_key_vault_key.rotation_policy] to minimize the risk of key exposure by ensuring that sensitive values are periodically rotated
   name         = "terragoat-generated-certificate-${var.environment}"
   key_vault_id = azurerm_key_vault.example.id
   key_type     = "RSA"
@@ -44,6 +48,7 @@ resource "azurerm_key_vault_key" "generated" {
     "wrapKey",
   ]
   tags = {
+    # Drata: Configure [azurerm_key_vault_key.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "898d5beaec7ffdef6df0d7abecff407362e2a74e"
     git_file             = "terraform/azure/key_vault.tf"
     git_last_modified_at = "2020-06-17 12:59:55"
@@ -60,6 +65,7 @@ resource "azurerm_key_vault_secret" "secret" {
   name         = "terragoat-secret-${var.environment}"
   value        = random_string.password.result
   tags = {
+    # Drata: Configure [azurerm_key_vault_secret.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "f8ff847bb69370bbe03b3d2b70db586ff6c867fc"
     git_file             = "terraform/azure/key_vault.tf"
     git_last_modified_at = "2020-06-19 21:16:08"
