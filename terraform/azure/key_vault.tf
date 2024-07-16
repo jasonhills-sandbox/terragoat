@@ -60,6 +60,7 @@ resource "azurerm_key_vault_secret" "secret" {
   name         = "terragoat-secret-${var.environment}"
   value        = random_string.password.result
   tags = {
+    # Drata: Configure [azurerm_key_vault_secret.tags] to ensure that organization-wide tagging conventions are followed.
     git_commit           = "f8ff847bb69370bbe03b3d2b70db586ff6c867fc"
     git_file             = "terraform/azure/key_vault.tf"
     git_last_modified_at = "2020-06-19 21:16:08"
