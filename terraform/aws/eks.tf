@@ -63,7 +63,7 @@ resource aws_subnet "eks_subnet1" {
   vpc_id                  = aws_vpc.eks_vpc.id
   cidr_block              = "10.10.10.0/24"
   availability_zone       = "${var.region}a"
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
   tags = merge({
     # Drata: Configure [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
     Name                                            = "${local.resource_prefix.value}-eks-subnet"
